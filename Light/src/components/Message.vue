@@ -16,10 +16,10 @@
 /*<!-- <style scoped> -->*/
 .icon-refresh{
 	position: absolute;
-	bottom: 20px;
-	right: 20px;
+	bottom: 30px;
+	right: 40px;
 }
-.icon-refresh:hover{
+.icon-refresh:active{
 	transition: 1s;
 	-moz-transform:rotate(720deg);
 	-webkit-transform:rotate(720deg);
