@@ -1,27 +1,32 @@
-# bohao
+# BoHao
 
-> A Vue.js project
+> 基于 Vue1.0 构建静态路由页面
 
-## Build Setup
+标签：vue1.0、webpack、bootstrap 
+
+## 项目访问
+* 访问地址：http://seaman-7.github.io/demo/bohao/
+* 源码地址：https://github.com/seaman-7/demo/tree/master/BoHao
+
+## 本地部署项目
 
 ``` bash
-# install dependencies
+
+# 克隆项目至本地
+git clone git@github.com:seaman-7/demo.git
+
+# 进入项目
+cd demo/BoHao
+
+# 安装第三方依赖模块
 npm install
 
-# serve with hot reload at localhost:8080
+# 启动本地服务 localhost:8080
 npm run dev
 
-# build for production with minification
+# 发布压缩代码(附带map)
 npm run build
 
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
