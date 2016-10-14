@@ -1,11 +1,13 @@
 # BoHao
-
-> 基于 Vue1.0 构建静态路由页面
+>  基于 Vue1.0 构建静态路由页面
 
 ## 标签:
-	*vue1.0、webpack、bootstrap*
+	- vue 1.0
+	- webpack
+	- bootstrap
 
 ## 项目访问
+* 项目截图：![BoHao](http://ww3.sinaimg.cn/large/0060lm7Tgw1f8rkeqoirvj311p0izdip.jpg)
 * 访问地址：http://seaman-7.github.io/demo/bohao/
 * 源码地址：https://github.com/seaman-7/demo/tree/master/BoHao
 
