@@ -22,9 +22,9 @@ export default {
   data () {
     return {
        slides:[
-                {img:'http://img1.imgtn.bdimg.com/it/u=3087723120,2486907605&fm=21&gp=0.jpg'},
-                {img:'http://img2.imgtn.bdimg.com/it/u=1703095530,1627452578&fm=21&gp=0.jpg'},
-                {img:'http://img1.imgtn.bdimg.com/it/u=1042691314,1928586555&fm=21&gp=0.jpg'},
+                {img:'http://ww2.sinaimg.cn/large/0060lm7Tgw1f8rm92vjxpj309s064jrm.jpg'},
+                {img:'http://ww3.sinaimg.cn/large/0060lm7Tgw1f8rm92ueyqj30av064wep.jpg'},
+                {img:'http://ww1.sinaimg.cn/large/0060lm7Tgw1f8rm92u5eij309s064q31.jpg'},
        ],
        icons:[
                 {img:"../static/1.png"},

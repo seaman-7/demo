@@ -15,7 +15,7 @@
 /*<!-- <style scoped> -->*/
 .message{
 	text-align:center;
-	background: url("https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1471857351&di=20baf9d96aaea420c28ee8d5cb2a5894&src=http://pic.linecg.com/uploads/video_sucai/189063/20150607/189063_1433687827_477.JPG");
+	background: url("http://ww4.sinaimg.cn/large/0060lm7Tgw1f8rlzbboigj30zk0k0dgq.jpg");
 	background-size:cover;
 	color: #fff;
 	width: 100%;

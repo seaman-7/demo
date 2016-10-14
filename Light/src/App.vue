@@ -86,7 +86,7 @@
 		export default({
 			data(){
 				return{
-					wechatImg:"http://qiniupicbed.qiniudn.com/upload/6a75a7c26775b68d04a26b45ff437a52.gif",
+					wechatImg:"http://ww3.sinaimg.cn/large/0060lm7Tgw1f8rlrwz4tgj30e80e8744.jpg",
 					// wechatImg:"./static/wechat.gif"
 					isN:false,
 				}
