@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>基础页面</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link href="https://cdn.bootcss.com/jquery-mobile/1.4.5/jquery.mobile.css" rel="stylesheet">
+</head>
+<body>
+
+	<div data-role="page" id="index">
+		<div data-role="header" data-position="fixed">
+			<h1>火车票查询</h1>
+		</div>
+		<div data-role="main" class="ui-content">
+			<div class="ui-field-contain">
+            <label>发车站:</label>
+            <input type="text" name="text-basic" id="search-begin" value="">
+        </div>
+        <div class="ui-field-contain">
+            <label>终点站:</label>
+            <input type="text" name="text-basic" id="search-end" value="">
+        </div>
+        <div class="ui-field-contain">
+            <label>车次:</label>
+            <input type="text" name="text-basic" id="search-no" value="">
+        </div>
+        <input type="button" value="搜索" id="search-submit">
+
+			<!-- 显示列表 -->
+			<ul data-role="listview" data-inset="true" id="list">
+
+			</ul>
+
+
+			<!-- <a href="#" id="ajaxbtn" class="ui-btn">点我加载</a> -->
+			<!-- 回流表格模式 -->
+			<!-- <table data-role="table" data-mode="reflow" class="ui-responsive table-stroke">
+			<thead>
+				<tr>
+					<th>第一列</th>
+					<th>第二列</th>
+					<th>第三列</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>123</td>
+					<td>456</td>
+					<td>789</td>
+				</tr>
+				<tr>
+					<td>333</td>
+					<td>444</td>
+					<td>555</td>
+				</tr>
+				<tr>
+					<td>666</td>
+					<td>777</td>
+					<td>888</td>
+				</tr>
+			</tbody>
+			</table> -->
+
+			<!-- <form>
+				<div class="ui-field-content">
+					<label >发车站</label>
+					<input type="text">
+				</div>
+				<div class="ui-field-content">
+					<label >到达站</label>
+					<input type="text">
+				</div>
+				<div class="ui-field-content">
+					<label >车次</label>
+					<input type="text">
+				</div>
+			</form> -->
+			<!-- <ul data-role="listview" data-inset="true">
+				<li><a href="#">项目1</a></li>
+				<li><a href="#">
+					<h2>G1次</h2>
+					<p>xxxx - xxxx</p>
+					<p>xxxx - xxxx</p>
+					<p class="ul-li-aside">9:00开</p>
+				</a></li>
+				<li><a href="#">项目3</a></li>
+				<li><a href="#">项目4</a></li>
+				<li><a href="#">项目5</a></li>
+			</ul> -->
+		</div>
+		<div data-role="footer" data-position="fixed">
+			<div data-role='navbar'>
+				<ul>
+					<li><a href="#" data-icon="camera">导航1</a></li>
+					<li><a href="#" data-icon="camera">导航2</a></li>
+					<li><a href="#" data-icon="camera">导航3</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div data-role="page" id="index2">
+		<div data-role="header">
+			<h1>我是标题2</h1>
+		</div>
+		<div data-role="main" class="ui-content">
+			<p>我是内容2</p>
+			<p><a href="#index" data-transition="flip">index</a></p>
+		</div>
+		<div data-role="footer">
+			<h1>我要页脚2</h1>
+		</div>
+	</div>
+
+	<div data-role="page" id="detail">
+
+    <div data-role="header" data-position="fixed">
+        <h1>列车时刻表查询</h1>
+    </div>
+
+    <div role="main" class="ui-content">
+        <h2></h2>
+        <table data-role="table" id="movie-table" data-mode="reflow" class="ui-responsive">
+            <thead>
+            <tr>
+                <th data-priority="1">站名</th>
+                <th data-priority="persist">到站时间</th>
+                <th data-priority="persist">出发时间</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <a href="#" class="ui-btn ui-corner-all" data-rel="back">返回</a>
+    </div>
+
+    <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#" data-icon="grid" class="ui-btn-active">查询</a></li>
+                <li><a href="#" data-icon="star">收藏</a></li>
+                <li><a href="#" data-icon="gear">设置</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+	<!-- <script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.js"></script> -->
+<script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
+<script src="https://cdn.bootcss.com/jquery-mobile/1.4.5/jquery.mobile.js"></script>
+<script>
+	//跨域中转
+	// const urlPre = "http://cors.itxti.net/?"
+	const urlPre = "http://crossorigin.me/"
+	//发车、到站 查时刻
+	const url1 = "http://ws.webxml.com.cn/WebServices/TrainTimeWebService.asmx/getStationAndTimeByStationName?UserID="
+	//车次 查时刻
+	const url2 = "http://ws.webxml.com.cn/WebServices/TrainTimeWebService.asmx/getStationAndTimeDataSetByTrainCode?UserID="
+	//车次 查途径
+	const url3 = "http://ws.webxml.com.cn/WebServices/TrainTimeWebService.asmx/getDetailInfoByTrainCode?&UserID="
+
+	//获取车次列表
+	let getTrainList = function(){
+		if($("#search-no").val()||($("#search-begin").val() && $("#search-end").val())){
+			// console.log($("#search-begin").val()+$("#search-end").val()+$("#search-no").val())
+			console.log("开始查询...")
+			// 隐藏搜索按钮
+			let searchButton = $(this)
+			searchButton.button("option","disabled",true)
+			//显示加载loading...
+			$.mobile.loading("show")
+
+			let _data = {}
+			let _url = url1
+			//通过起始站、终点站查询
+			if (!$("#search-no").val()){
+				_data.StartStation = $("#search-begin").val()
+				_data.ArriveStation = $("#search-end").val()
+			}
+			//通过车次查询
+			else{
+				_data.TrainCode = $("#search-no").val()
+				_url = url2
+			}
+
+			$.get(urlPre + _url, _data, function(data){
+				let list = $("#list")
+				let timeTables = $(data).find("TimeTable")
+
+				let _arr = []
+				timeTables.each(function(index,obj){
+					let i = index;
+					if(i > 10) return false
+
+					//防止查询数据缺失
+					let that = $(this)
+					if(that.find("FirstStation").text() == "数据没有被发现"){
+						alert("数据没有被发现")
+						return false
+					}
+					
+					let _html = '<li><a href="#" data-no="' + that.find("TrainCode").text() + '">'+
+								'<h2>'+that.find("TrainCode").text()+'次</h2>'+
+								'<p>'+that.find("FirstStation").text()+' - '+that.find("LastStation").text()+'</p>'+
+								'<p>用时：'+that.find("UseDate").text()+'</p>'+
+								'<p class="ui-li-aside">' + that.find("StartTime").text() + ' 开</p>'+
+								'</a></li>'
+
+					_arr.push(_html)
+				searchButton.button("option","disabled",false)
+				$.mobile.loading("hide")
+				})
+
+				if(_arr.length > 0){
+					list.html(_arr.join(""))
+					list.listview("refresh")
+				}
+
+			})
+		}
+		else{
+			alert("Please enter something!")
+		}
+	}
+
+	let isAjax = false
+
+	let getInfoByTrainCode = function(){
+
+		//设定函数只能执行一次
+		if(isAjax) return
+		isAjax = true
+
+		$.mobile.loading("show")
+
+		let trainCode = $(this).attr("data-no")
+		//通过Ajax获取单趟详细车次数据
+		$.get(urlPre + url3, {TrainCode: trainCode}, function (data) {
+			$("#detail").find(".ui-content h2").first().html(trainCode + "次")
+			
+			//置空详细页tbody内容
+			let tbody = $("#detail").find(".ui-content tbody")
+			tbody.html("")
+
+
+		$(data).find("TrainDetailInfo").each(function(index,obj){
+			let tr = $("<tr></tr>")
+			let that = $(this)
+			let _html = '<td>' + that.find("TrainStation").text() + '</td>' +
+					    '<td>' + that.find("ArriveTime").text() + '</td>' +
+					    '<td>' + that.find("StartTime").text() + '</td>'
+			tr.html(_html)
+			tbody.append(tr)
+		})
+
+		isAjax = false
+
+		$.mobile.loading("hide")
+		$.mobile.changePage("#detail")
+
+	    })
+	}
+	//绑定事件
+	let bindEvent = function(){
+		$("#search-submit").on("click",getTrainList)
+		$("#list").on("click","a",getInfoByTrainCode)
+		console.log("查询结束！")
+
+	}
+	$(document).on("pageinit","#index",function(){
+		bindEvent()
+	})
+// 	$(document).on("pageinit","#index",function(){
+// 		var url = "http://crossorigin.me/http://ws.webxml.com.cn/WebServices/TrainTimeWebService.asmx/getDetailInfoByTrainCode?TrainCode=G1&UserID="
+// 		//点击ajaxbtn获取数据
+// 		$("#ajaxbtn").on("click",function(){
+// 			//显示加载loading...
+// 			$.mobile.loading("show")
+// 			$.get(url,{TrainCode:"G1"},function(data){
+// 				console.log(data)
+// 				//隐藏加载loading...
+// 				$.mobile.loading("hide")
+// 			})
+
+// 		})
+// 	})
+// $(document).on("pagebeforehide","#index",function(){
+// 	alert("pagebeforehide")
+// })
+// $(document).on("pagehide","#index",function(){
+// 	alert("pagehide")
+// })
+// $(document).on("pagebeforeshow","#index2",function(){
+// 	alert("pagebeforeshow")
+// })
+// $(document).on("pageshow","#index2",function(){
+// 	alert("pageshow")
+// })
+</script>
+</body>
+</html>
