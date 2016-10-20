@@ -9,11 +9,11 @@
 	- Feed2js
 
 ## 项目访问
-* 项目截图：
-![1](http://ww1.sinaimg.cn/large/0060lm7Tgw1f8rlrx4lkij30aa0idtae.jpg)![2](http://ww2.sinaimg.cn/large/0060lm7Tgw1f8rlrwzl2hj30ab0i9jrw.jpg)![3](http://ww4.sinaimg.cn/large/0060lm7Tgw1f8rlrwizi6j30aa0ib3z0.jpg)![4](http://ww4.sinaimg.cn/large/0060lm7Tgw1f8rlrxbx48j30ab0iewf2.jpg)
+项目截图：
 
-* 访问地址：http://seaman-7.github.io/demo/bohao/
-* 源码地址：https://github.com/seaman-7/demo/tree/master/BoHao
+![1](http://ww1.sinaimg.cn/large/0060lm7Tgw1f8rlrx4lkij30aa0idtae.jpg)![2](http://ww2.sinaimg.cn/large/0060lm7Tgw1f8rlrwzl2hj30ab0i9jrw.jpg)![3](http://ww4.sinaimg.cn/large/0060lm7Tgw1f8rlrwizi6j30aa0ib3z0.jpg)![4](http://ww4.sinaimg.cn/large/0060lm7Tgw1f8rlrxbx48j30ab0iewf2.jpg)
+* 访问地址：http://seaman-7.github.io/demo/vue_jd/
+* 源码地址：https://github.com/seaman-7/demo/tree/master/Light
 
 ## 本地部署项目
 
@@ -23,7 +23,7 @@
 git clone git@github.com:seaman-7/demo.git
 
 # 进入项目
-cd demo/BoHao
+cd demo/Light
 
 # 安装第三方依赖模块
 npm install

@@ -40,11 +40,10 @@
 			<div class="content-block side_bar">
 				<p>关于</p>
 				<hr>
-				<p>by vue.js（1.0）and sui - webapp</p>
+				<p>By vue.js（1.0）and sui - webapp</p>
 				<p>源码地址</p>
 				<p><a href='https://github.com/seaman-7/light'>https://github.com/seaman-7/light</a></p>
-				<p>意见反馈</p>
-				<p>留言板、微信留言，一起学习</p>
+				<p>反馈意见，一起学习</p>
 				<img :src="wechatImg" class="sub_wechat" alt="wechat">
 				<div class="row">
 					<span class="col-33">版本号 : </span> <span class="pull-right"> 1.01 beat </span>
@@ -86,7 +85,7 @@
 		export default({
 			data(){
 				return{
-					wechatImg:"http://ww3.sinaimg.cn/large/0060lm7Tgw1f8rlrwz4tgj30e80e8744.jpg",
+					wechatImg:"http://ww4.sinaimg.cn/large/0060lm7Tgw1f8wp70tlecj305k05kdg0.jpg",
 					// wechatImg:"./static/wechat.gif"
 					isN:false,
 				}
