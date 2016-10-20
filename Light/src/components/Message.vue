@@ -17,7 +17,7 @@
 .icon-refresh{
 	position: absolute;
 	bottom: 20px;
-	right: 20px;
+	right: 10%;
 }
 .icon-refresh:hover{
 	transition: 1s;
@@ -68,4 +68,5 @@ export default({
 			}
 	}
 })
-	</script>
+
+</script>
