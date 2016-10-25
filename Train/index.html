@@ -158,7 +158,6 @@
 	const url2 = "http://ws.webxml.com.cn/WebServices/TrainTimeWebService.asmx/getStationAndTimeDataSetByTrainCode?UserID="
 	//车次 查途径
 	const url3 = "http://ws.webxml.com.cn/WebServices/TrainTimeWebService.asmx/getDetailInfoByTrainCode?&UserID="
-
 	//获取车次列表
 	let getTrainList = function(){
 		if($("#search-no").val()||($("#search-begin").val() && $("#search-end").val())){
@@ -169,7 +168,6 @@
 			searchButton.button("option","disabled",true)
 			//显示加载loading...
 			$.mobile.loading("show")
-
 			let _data = {}
 			let _url = url1
 			//通过起始站、终点站查询
@@ -182,16 +180,13 @@
 				_data.TrainCode = $("#search-no").val()
 				_url = url2
 			}
-
 			$.get(urlPre + _url, _data, function(data){
 				let list = $("#list")
 				let timeTables = $(data).find("TimeTable")
-
 				let _arr = []
 				timeTables.each(function(index,obj){
 					let i = index;
-					if(i > 10) return false
-
+					if(i > 50) return false
 					//防止查询数据缺失
 					let that = $(this)
 					if(that.find("FirstStation").text() == "数据没有被发现"){
@@ -205,34 +200,26 @@
 								'<p>用时：'+that.find("UseDate").text()+'</p>'+
 								'<p class="ui-li-aside">' + that.find("StartTime").text() + ' 开</p>'+
 								'</a></li>'
-
 					_arr.push(_html)
 				searchButton.button("option","disabled",false)
 				$.mobile.loading("hide")
 				})
-
 				if(_arr.length > 0){
 					list.html(_arr.join(""))
 					list.listview("refresh")
 				}
-
 			})
 		}
 		else{
 			alert("Please enter something!")
 		}
 	}
-
 	let isAjax = false
-
 	let getInfoByTrainCode = function(){
-
 		//设定函数只能执行一次
 		if(isAjax) return
 		isAjax = true
-
 		$.mobile.loading("show")
-
 		let trainCode = $(this).attr("data-no")
 		//通过Ajax获取单趟详细车次数据
 		$.get(urlPre + url3, {TrainCode: trainCode}, function (data) {
@@ -241,8 +228,6 @@
 			//置空详细页tbody内容
 			let tbody = $("#detail").find(".ui-content tbody")
 			tbody.html("")
-
-
 		$(data).find("TrainDetailInfo").each(function(index,obj){
 			let tr = $("<tr></tr>")
 			let that = $(this)
@@ -252,12 +237,9 @@
 			tr.html(_html)
 			tbody.append(tr)
 		})
-
 		isAjax = false
-
 		$.mobile.loading("hide")
 		$.mobile.changePage("#detail")
-
 	    })
 	}
 	//绑定事件
@@ -265,7 +247,6 @@
 		$("#search-submit").on("click",getTrainList)
 		$("#list").on("click","a",getInfoByTrainCode)
 		console.log("查询结束！")
-
 	}
 	$(document).on("pageinit","#index",function(){
 		bindEvent()
@@ -281,7 +262,6 @@
 // 				//隐藏加载loading...
 // 				$.mobile.loading("hide")
 // 			})
-
 // 		})
 // 	})
 // $(document).on("pagebeforehide","#index",function(){
