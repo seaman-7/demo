@@ -201,6 +201,7 @@
 								'<p class="ui-li-aside">' + that.find("StartTime").text() + ' 开</p>'+
 								'</a></li>'
 					_arr.push(_html)
+					console.log("查询结束！")
 				searchButton.button("option","disabled",false)
 				$.mobile.loading("hide")
 				})
@@ -212,7 +213,9 @@
 		}
 		else{
 			alert("Please enter something!")
+			console.log("Please enter something!")
 		}
+
 	}
 	let isAjax = false
 	let getInfoByTrainCode = function(){
@@ -246,7 +249,7 @@
 	let bindEvent = function(){
 		$("#search-submit").on("click",getTrainList)
 		$("#list").on("click","a",getInfoByTrainCode)
-		console.log("查询结束！")
+		
 	}
 	$(document).on("pageinit","#index",function(){
 		bindEvent()
